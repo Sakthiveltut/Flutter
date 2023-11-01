@@ -64,11 +64,16 @@ class CircularButton extends StatelessWidget {
   final double height;
   final Color color;
   final Icon icon;
-  final Function onClick;
+  final VoidCallback onClick;
 
-  const CircularButton(
-      {Key key, this.width, this.height, this.color, this.icon, this.onClick})
-      : super(key: key);
+  const CircularButton({
+    Key? key,
+    required this.width,
+    required this.height,
+    required this.color,
+    required this.icon,
+    required this.onClick,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +81,11 @@ class CircularButton extends StatelessWidget {
       decoration: BoxDecoration(color: color, shape: BoxShape.circle),
       width: width,
       height: height,
-      child: IconButton(icon: icon, onPressed: onClick),
+      child: InkWell(
+        // Use InkWell to handle taps
+        onTap: onClick,
+        child: Center(child: icon),
+      ),
     );
   }
 }

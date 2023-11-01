@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+
 void main() {
   runApp(MaterialApp(
     home: MyApp(),
   ));
 }
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,8 +19,8 @@ class MyApp extends StatelessWidget {
           width: 300,
           color: Colors.blueGrey,
           child: Stack(
-            alignment: Alignment.topRight,
-            clipBehavior: Clip.none, // Add this line to prevent clipping
+            alignment: Alignment.topCenter,
+            // clipBehavior: Clip.none, // Add this line to prevent clipping
             fit: StackFit.loose,
             children: <Widget>[
               Container(

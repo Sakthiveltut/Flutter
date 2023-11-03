@@ -12,17 +12,15 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('hello'),
         ),
-        body: Card(
-          margin: EdgeInsets.all(15),
-          elevation: 10,
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  buildMyWidget(),
-                  buildMyListTile(),
-                ],
-              ),
+        body: SingleChildScrollView(
+          child: Card(
+            margin: EdgeInsets.all(15),
+            elevation: 10,
+            child: Column(
+              children: [
+                teamName(),
+                playersList(),
+              ],
             ),
           ),
         ),
@@ -30,7 +28,7 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  Widget buildMyWidget() {
+  Widget teamName() {
     return IntrinsicWidth(
       child: Column(
         children: [
@@ -48,8 +46,8 @@ class MyApp extends StatelessWidget {
           ),
           Image.network(
             "https://sportavideos.blob.core.windows.net/videos/IMAGES/TEAMS/TEA0000660.png",
-            height: 100,
-            width: 100,
+            height: 70,
+            width: 70,
           ),
           Text('DV'),
         ],
@@ -57,8 +55,8 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  Widget buildMyListTile() {
-    List<String> values = [
+  Widget playersList() {
+    List<String> playerName = [
       "Value 1",
       "Value 2",
       "Value 3",
@@ -68,13 +66,30 @@ class MyApp extends StatelessWidget {
       "Value 7",
       "Value 8",
       "Value 9",
-      "Value 10"
+      "Value 10",
+      "Value 11"
+    ];
+    List<String> playerRole = [
+      "Value 1",
+      "Value 2",
+      "Value 3",
+      "Value 4",
+      "Value 5",
+      "Value 6",
+      "Value 7",
+      "Value 8",
+      "Value 9",
+      "Value 10",
+      "Value 11"
     ];
 
     return Column(
-      children: values.map((value) {
+      children: List.generate(playerName.length, (index) {
         return ListTile(
-          contentPadding: EdgeInsets.all(10),
+          contentPadding: EdgeInsets.only(
+            left: 20,
+            top: 10,
+          ),
           leading: Container(
             decoration: BoxDecoration(
               border: Border.all(width: 0.5),
@@ -82,15 +97,18 @@ class MyApp extends StatelessWidget {
             ),
             child: Image.network(
               "https://ilt20storage.blob.core.windows.net/ilt20storage/players/PYC0000522.png",
-              width: 70,
+              width: 60,
             ),
           ),
-          title:
-              Text(value, style: TextStyle(color: Colors.blue, fontSize: 20)),
-          subtitle: Text('Subtitle'),
+          title: Text(
+            playerName[index],
+            textAlign: TextAlign.start,
+            style: TextStyle(color: Colors.blue, fontSize: 15),
+          ),
+          subtitle: Text(playerRole[index], textAlign: TextAlign.start),
           isThreeLine: true,
         );
-      }).toList(),
+      }),
     );
   }
 }
